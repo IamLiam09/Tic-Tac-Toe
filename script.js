@@ -1,4 +1,3 @@
-var active = true;
 const gameObject = () => {
 	const players = {
 		player1: {
@@ -26,8 +25,7 @@ const gameObject = () => {
 	audio2.src = "click2.wav"
 
 	// Win possibilities
-	const winPossiblity = {
-		winPossarr: [
+	const winPossiblity = [
 			[0, 1, 2],
 			[3, 4, 5],
 			[6, 7, 8],
@@ -36,11 +34,11 @@ const gameObject = () => {
 			[2, 5, 8],
 			[0, 4, 8],
 			[6, 4, 2],
-		],
-	};
+		]
 	// Check for win or tie
 	function outcome(){
 		let roundwon = false
+		let symbolWon
 		for(let i = 0; i <= 7; i++){
 			const win = winPossiblity[i]
 			const a = gameBoard[win[0]]
@@ -50,20 +48,27 @@ const gameObject = () => {
 				continue
 			}
 			if(a === b && b === c){
+				symbolWon = b
+				// console.log(b)
 				roundwon = true
 				break
 			}
 		}
-		if (roundwon){
-			resultAction(win)
+
+		if(roundwon){
+			resultAction("win", symbolWon)
 		}
 		if(!gameBoard.includes("")){
-			resultAction(Tie)
+			resultAction("Tie")
 		}
 	}
-	function resultAction(result){
-		if(result === "win"){
-			console.log("someone one")
+	function resultAction(result, symbol){
+		if(result === "win" && symbol === "x"){
+			// console.log(symbol)
+			winner("player1")
+		}if(result === "win" && symbol === "o"){
+			// console.log(symbol)
+			winner("player2")
 		}if(result === "Tie"){
 			console.log("Tie")
 		}
@@ -71,6 +76,13 @@ const gameObject = () => {
 	function updateBoard(indx){
 		gameBoard[indx] = currentplayer()
 		
+	}
+	function winner (name){
+		const body = document.querySelector("body")
+		const innerdiv = document.createElement("div")
+		innerdiv.classList.add("popup")
+		innerdiv.innerHTML = `<p class="winnertext"><span class="colorwin">${name} </span>won</p>`
+		body.append(innerdiv)
 	}
 	function currentplayer (){
 		let recentplayer
@@ -94,7 +106,7 @@ const gameObject = () => {
 					play2.turn = true;
 					updateBoard(e.target.id)
 					// play1arry.push(e.target.id)
-					
+					outcome()
 					audio.play()
 				}
 				if (play2.turn === true && e.target.innerHTML === "") {
@@ -105,7 +117,7 @@ const gameObject = () => {
 					play2.turn = false;
 					updateBoard(e.target.id)
 					// play2arry.push(e.target.id)
-				
+					outcome()
 					audio2.play()
 				}
 			});
