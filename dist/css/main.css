@@ -1,0 +1,24 @@
+.form {
+  position: relative;
+  width: 15em;
+  height: 1.5rem;
+}
+.form__input {
+  position: absolute;
+  width: 100%;
+  height: 50%;
+  border: 2px solid #e1e5ee;
+  border-radius: 0.5rem;
+  font-family: "Convergence", sans-serif;
+  font-size: 1.2rem;
+  color: white;
+  outline: none;
+  padding: 1rem;
+  background: none;
+}
+.form__input:hover {
+  border-color: #ddffff;
+}
+.form__input:focus {
+  border-color: #18ffff;
+}

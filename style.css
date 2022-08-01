@@ -1,16 +1,15 @@
-@import url('https://fonts.googleapis.com/css2?family=Metal&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Metal&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@800&display=swap");
 * {
 	padding: 0;
 	margin: 0;
 }
 body {
 	background-color: hsl(222, 11%, 24%);
-	height: 100%;
 	width: 100%;
-	position: relative;
 	box-sizing: border-box;
 }
+/* The gameboard */
 #gameboard {
 	--size: 3;
 	max-width: 340px;
@@ -18,19 +17,20 @@ body {
 	width: 75%;
 	height: 100px;
 	min-height: 340px;
-	margin-bottom: 60px;
+	margin-bottom: 10px;
 	border-radius: 20px;
 	position: absolute;
 	padding: 1.5em;
-	top: 35%;
+	top: 15%;
 	left: 50%;
 	z-index: 2;
 	cursor: pointer;
+	margin-top: 0;
 	display: grid;
 	justify-items: center;
 	align-items: center;
 	grid-template-columns: repeat(var(--size), minmax(auto, auto));
-	transform: translate(-50%, 35%);
+	transform: translate(-50%, 15%);
 	box-shadow: 1px 1px 5px 0 black;
 }
 .gameboardDivs {
@@ -42,7 +42,7 @@ body {
 	padding: 0;
 	margin: 0;
 	text-align: center;
-	font-family: 'Open Sans', sans-serif;
+	font-family: "Open Sans", sans-serif;
 	font-weight: bolder;
 	font-size: 6rem;
 	display: flex;
@@ -57,7 +57,6 @@ body {
 }
 .gameboardDivs:nth-child(2) {
 	border-top: none;
-	/* border-left: none; */
 	border-bottom: none;
 }
 .gameboardDivs:nth-child(3) {
@@ -91,7 +90,8 @@ body {
 	border-left: none;
 	border-top: none;
 }
-.xclass{
+/* The symbols */
+.xclass {
 	background: -webkit-linear-gradient(
 		230deg,
 		hsl(94, 94%, 52%),
@@ -99,11 +99,11 @@ body {
 	);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	transform: scale(1); 
-	transition: transform 2s, opacity .2s;
+	transform: scale(1);
+	transition: transform 2s, opacity 0.2s;
 	user-select: none;
 }
-.oclass{
+.oclass {
 	background: -webkit-linear-gradient(
 		230deg,
 		hsl(360, 94%, 52%),
@@ -111,64 +111,161 @@ body {
 	);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
-	transform: scale(1); 
-	transition: transform .2s, opactiy .2s;
+	transform: scale(1);
+	transition: transform 0.2s, opactiy 0.2s;
 	user-select: none;
-}
-/* .score {
-	
-} */
-#gameScore {
-	max-width: 360px;
-	width: 90%;
-	height: 100px;
-	min-height: 100px;
-	margin: 3em auto;
-	/* border: 2px solid whitesmoke; */
-	visibility: visible;
-	position: absolute;
-	top: -485%;
-	left: 50%;
-	transform: translate(-50%, 485%);
-	z-index: 4;
-	padding: 0.2em;
-	display: flex;
-	justify-content: space-around;
-	align-items: center;
 }
 .divider {
 	height: 80%;
 	width: 1px;
 	background: hsl(0, 0%, 96%);
 }
-.popup{
+/* Announcers of winner/tie */
+.popup {
 	position: fixed;
+	display: none;
+	top: 0;
+	left: 0;
+	z-index: 6;
+	letter-spacing: 1px;
+	width: 100%;
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
+	backdrop-filter: blur(10px);
+	justify-content: center;
+	align-items: center;
+	user-select: none;
+}
+.tie {
+	position: fixed;
+	display: none;
 	top: 0;
 	left: 0;
 	z-index: 6;
 	width: 100%;
-	height:  100%;
-	background:rgba(0, 0, 0, 0.5);
+	height: 100%;
+	background: rgba(0, 0, 0, 0.5);
 	backdrop-filter: blur(10px);
-	display: flex;
 	justify-content: center;
 	align-items: center;
+	user-select: none;
+	text-transform: uppercase;
 }
-.winnertext{
-	font-family: 'Open Sans', sans-serif;
+.winnertext {
+	font-family: "Open Sans", sans-serif;
 	font-size: 2rem;
 	color: white;
 	font-weight: normal;
 	user-select: none;
 }
-.colorwin{
+.colorwin {
 	font-size: 3.5rem;
-	font-family: 'Metal', cursive;
-	background: -webkit-linear-gradient(
-		330deg,
-		#9815d5,
-		#171ee8b0
-	);
+	font-family: "Metal", cursive;
+	background: -webkit-linear-gradient(330deg, #9815d5, #171ee8b0);
 	-webkit-background-clip: text;
 	-webkit-text-fill-color: transparent;
+	margin-right: 12px;
 }
+/* Restart button */
+.restart {
+	outline: none;
+	color: white;
+	text-transform: uppercase;
+	font-size: 1rem;
+	width: 120px;
+	height: 40px;
+	border-radius: 5px;
+	background-color: dodgerblue;
+	border: none;
+	padding: auto;
+	position: absolute;
+	bottom: -5%;
+	left: 50%;
+	z-index: 3;
+	transform: translate(-50%, 0%);
+	margin-top: 150px;
+}
+/* Where player 1 and player 2 resides */
+#gameStats{
+	display: inline-block;
+	max-width: 370px;
+	width: 85%;
+	min-height: 40px;
+	height: 20px;
+	position: absolute;
+	top: 11%;
+	left: 50%;
+	transform: translate(-50%, 15%);
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	text-align: center;
+}
+.btn{
+	padding: 10px;
+	width: 80px;
+	height: 15px;
+	border-radius: 15px;
+	color: hsl(180, 11%, 74%);
+	font-weight: bold;
+	letter-spacing: 1.5px;
+	font-family: "Open Sans", sans-serif;
+	text-transform: capitalize;
+	user-select: none;
+	transition: all .4s;
+}
+.btn:hover, 
+.btn:focus{
+	transform: scale(1.2);
+	border: 1.5px solid dodgerblue;
+	color: white;
+}
+.selection{
+	display: none;
+}
+.selectUser{
+	position: fixed;
+	top: 0;
+	left: 0;
+	z-index: 5;
+	width: 100%;
+	height: 100%;
+	display: flex;
+	gap: 4em;
+	flex-direction: column;
+
+	justify-content: center;
+	align-items: center;
+	color: white;
+	backdrop-filter: blur(5px);
+}
+.selecttext{
+	font-size: 3rem;
+	font-family: "Open Sans", sans-serif;
+	letter-spacing: 1.5px;
+	text-transform: capitalize;
+	user-select: none;
+}
+.selecttext:hover,
+.selecttext:focus{
+	color: hsl(210, 100%, 56%);
+}
+/* Button to save name */
+.saveName{
+	outline: none;
+	color: white;
+	text-transform: capitalize;
+	font-size: 1rem;
+	width: 120px;
+	height: 40px;
+	border-radius: 5px;
+	background-color: dodgerblue;
+	border: none;
+	padding: auto;
+	position: fixed;
+	left: 50%;
+	z-index: 3;
+	transform: translate(-50%, 35%);
+	margin-top: 150px;
+}
+

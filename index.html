@@ -6,10 +6,15 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Tic Tac Toe</title>
 		<link rel="stylesheet" href="style.css" />
+		<link rel="stylesheet" href="dist/css/main.css">
 		<link rel="shortcut icon" href="favicon.png" type="image/x-icon" />
 	</head>
 	<body>
-		<section class="gameStats" id="gameStats"></section>
+		<section class="gameStats" id="gameStats">
+			<div class="player1name btn" id="firstplayer">Player1</div>
+			<div class="player2name btn" id="secondplayer">Player2</div>
+			<div class="selection"></div>
+		</section>
 		<main class="main" id="main">
 			<div class="gameboard" id="gameboard">
 				<div class="gameboardDivs" id="0"></div>
@@ -23,11 +28,11 @@
 				<div class="gameboardDivs" id="8"></div>
 			</div>
 		</main>
-		<!-- <section class="gameScore" id="gameScore">
-			<p class="score player1">7</p>
-			<span class="divider"></span>
-			<p class="score player2">6</p>
-		</section> -->
+		<div class="popup">
+			<p class="winnertext"><span class="colorwin"></span>won</p>
+		</div>
+		<div class="tie"><p class="winnertext">Tie</p></div>
+		<button class="restart" id="restart">restart</button>
 		<script src="script.js" defer></script>
 	</body>
 </html>
