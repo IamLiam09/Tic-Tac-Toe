@@ -157,6 +157,7 @@ body {
 	color: white;
 	font-weight: normal;
 	user-select: none;
+	text-transform: capitalize;
 }
 .colorwin {
 	font-size: 3.5rem;
@@ -213,6 +214,7 @@ body {
 	text-transform: capitalize;
 	user-select: none;
 	transition: all .4s;
+	overflow: hidden;
 }
 .btn:hover, 
 .btn:focus{
