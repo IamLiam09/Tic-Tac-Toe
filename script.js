@@ -38,10 +38,10 @@ const gameObject = () => {
 	const audio2 = new Audio();
 	const humanWon = new Audio();
 	const botWon = new Audio();
-	audio.src = "click3.wav";
-	audio2.src = "click2.wav";
-	humanWon.src = "Human-won.wav";
-	botWon.src = "Bot-won.wav";
+	audio.src = "sound/click3.wav";
+	audio2.src = "sound/click2.wav";
+	humanWon.src = "sound/Bot-won.wav";
+	botWon.src = "sound/Bot-won.wav";
 
 	// Win possibilities
 	const winPossiblity = [
