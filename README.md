@@ -5,8 +5,8 @@
 * Dom manipulation
 * Array manipulation
 * Dynamic Javascript
-* indepth event listners
+* indepth event listeners
 ## Note
-A project by The Odin Project. One of the starters for beginner to junior developers.
+A project by The Odin Project. One of the starters for beginers to junior developers.
 <br>
 [Live demo](https://iamliam09.github.io/Tic-Tac-Toe/)
