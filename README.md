@@ -8,3 +8,5 @@
 * indepth event listners
 ## Note
 A project by The Odin Project. One of the starters for beginner to junior developers.
+<br>
+[Live demo](https://iamliam09.github.io/Tic-Tac-Toe/)
