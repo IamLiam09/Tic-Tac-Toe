@@ -270,4 +270,20 @@ body {
 	transform: translate(-50%, 35%);
 	margin-top: 150px;
 }
+@media(max-width: 850px){
+	body{
+		height: 110vh;
+	}
+	#gameboard{
+		margin-bottom: 150px;
+	} 
+	.restart{
+		position: absolute;
+		bottom: -12%;
+		left: 50%;
+		z-index: 3;
+		transform: translate(-50%, 50%);
+		margin-top: 100px;
+	}
+}
 

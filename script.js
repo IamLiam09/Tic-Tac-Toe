@@ -173,6 +173,7 @@ const gameObject = () => {
 			div1.classList.add("selectUser");
 			// div2.classList.add("innerdiv");
 			firstselection.classList.add("selecttext");
+			firstselection.classList.add("firstselect");
 			firstselection.id = "firstplayer";
 			// secondSelection.id = "Ai";
 			// secondSelection.classList.add("selecttext");
@@ -195,6 +196,7 @@ const gameObject = () => {
 			div1.classList.add("selectUser");
 			// div2.classList.add("innerdiv");
 			firstselection.classList.add("selecttext");
+			firstselection.classList.add("secondselect");
 			firstselection.id = "secondplayer";
 			// secondSelection.id = "Ai";
 			// secondSelection.classList.add("selecttext");
@@ -225,33 +227,33 @@ const gameObject = () => {
 		form.appendChild(button);
 	}
 	function nameFromForm(e) {
-		let pname;
+		let pname = "";
 		const form = document.getElementById("name");
 		e.preventDefault();
 		pname = form.value;
 		if (pname.length > 5 && firstPlayerActive) {
 			xWinnerName = pname;
 			firstPlayer.innnerText = ``;
-			firstPlayer.innerText = `${pname.substring(0, 5)}...`;
+			firstPlayer.innerText = `${xWinnerName.substring(0, 5)}...`;
 			firstPlayerActive = false;
 		}
-		if (pname.length < 5 && firstPlayerActive) {
+		if (pname.length <= 5 && firstPlayerActive) {
 			xWinnerName = pname;
 			firstPlayer.innnerText = ``;
-			firstPlayer.innerText = pname;
+			firstPlayer.innerText = xWinnerName;
 			firstPlayerActive = false;
 		}
 
 		if (pname.length > 5 && secondPlayerActive) {
 			oWinnerName = pname;
 			secondPlayer.innnerText = ``;
-			secondPlayer.innerText = `${pname.substring(0, 5)}...`;
+			secondPlayer.innerText = `${oWinnerName.substring(0, 5)}...`;
 			secondPlayerActive = false;
 		}
-		if (pname.length > 5 && secondPlayerActive) {
+		if (pname.length <= 5 && secondPlayerActive) {
 			oWinnerName = pname;
 			secondPlayer.innnerText = ``;
-			secondPlayer.innerText = pname;
+			secondPlayer.innerText = oWinnerName;
 			secondPlayerActive = false;
 		}
 	}
@@ -281,7 +283,11 @@ const gameObject = () => {
 		if (e.target.classList.contains("selectUser")) {
 			removeSelectUser();
 		}
-		if (e.target.classList.contains("selecttext")) {
+		if (e.target.classList.contains("firstselect")) {
+			removePlayers();
+			nameform();
+		}
+		if (e.target.classList.contains("secondselect")) {
 			removePlayers();
 			nameform();
 		}
